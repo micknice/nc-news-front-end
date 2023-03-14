@@ -54,4 +54,4 @@ const deleteCommentByCommentId = (commentId) => {
 
 
 
-export { getTopics, getArticles, getArticleByArticleId, getCommentsByArticleId, postCommentByArticleId, patchVotesByArticleId, getUsers, deleteCommentByCommentId }
+export { getTopics, getArticles, getArticleByArticleId, getCommentsByArticleId, postCommentByArticleId, patchVotesByArticleId, getUsers, deleteCommentByCommentId };

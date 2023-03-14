@@ -1,0 +1,73 @@
+.a {
+    display:flex;
+    flex-direction: column;
+    margin-left: auto;
+}
+
+.topicandposter {
+    border-radius: 2px;
+    
+    display:flex;
+    flex-direction: row;
+    
+
+}
+
+.topicandposterelements {
+    display:flex;
+    margin-right: 3%;
+    
+
+}
+#topic {
+    font-weight: 600;
+    font-size: large;
+}
+.votesandcommentcount {
+    display:flex;
+    flex-direction: row;
+    
+
+}
+
+.votecommentelement {
+    margin-right: 3%;
+
+}
+.scroll {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    
+    
+}
+
+.articletitle {
+    width: 80%;
+    display:flex;
+    word-wrap: normal;
+    
+}
+.bodyandimage {
+    display:flex;
+    word-wrap: normal;
+    width:fit-content
+
+}
+.body {
+    min-width: 60%;
+    max-width: 60%;
+}
+
+.articlesthumbnail {
+    display:flex;
+    flex-direction: column;
+    border-radius: 10px;
+    width:auto;
+    max-width: 20%;
+    max-height: 20%;
+
+    
+    
+    /* margin-left: auto; */
+}

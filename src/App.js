@@ -1,12 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+
+import Articles from './components/articles.jsx';
+import Header from './components/header.jsx';
+import {Routes, Route} from 'react-router-dom'
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        
-      </header>
+    <div className="App">       
+      <Routes>     
+        <Route exact path='/' element= {<Articles />}/> 
+      </Routes>
     </div>
   );
 }
