@@ -75,3 +75,13 @@ p {
     
     /* margin-left: auto; */
 }
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    
+
+}
