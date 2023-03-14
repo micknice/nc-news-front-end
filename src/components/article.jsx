@@ -8,7 +8,6 @@ import '../test.css';
 
 function Article() {
     const { article_id } = useParams();
-    // const topic = `${article.topic.slice(0,1).toUpperCase()}${article.topic.slice(1, article.topic.length)}`
     const [article, setArticle] = useState('');
     const [postedAt, setPostedAt] = useState('');
     const [loading, setLoading] = useState(true);   
