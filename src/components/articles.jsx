@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import ArticleCard from './article-card';
-import Header from './header';
+
 import {getArticles} from '../utils/api';
 import '../test.css';
 

@@ -12,6 +12,9 @@
     
 
 }
+p {
+    margin:0;
+}
 
 .topicandposterelements {
     display:flex;
@@ -41,6 +44,7 @@
     
     
 }
+
 
 .articletitle {
     width: 80%;
