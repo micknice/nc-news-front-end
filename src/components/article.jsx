@@ -1,7 +1,7 @@
 import {useParams} from 'react-router-dom';
 import {useState, useEffect} from 'react';
-import { getArticleByArticleId} from '../utils/api';
-
+import { getArticleByArticleId, getCommentsByArticleId} from '../utils/api';
+import CommentCard from './comment-card';
 import '../test.css';
 
 
@@ -10,7 +10,9 @@ function Article() {
     const { article_id } = useParams();
     const [article, setArticle] = useState('');
     const [postedAt, setPostedAt] = useState('');
-    const [loading, setLoading] = useState(true);   
+    const [loading, setLoading] = useState(true); 
+    const [comments, setComments] = useState([]);
+    const [loadingComments, setLoadingComments] = useState(true); 
     
     useEffect(() => {         
         getArticleByArticleId(article_id).then((articleFromApi) => {
@@ -18,12 +20,20 @@ function Article() {
         }).then(() => {
             setLoading(false)
             setPostedAt(article.created_at.slice(0, article.created_at.length -5).replace('T', '  '))
-        })      
+        }).then(() => {getCommentsByArticleId(article_id).then((comments) => {
+            setComments(comments)
+        })}).then(() => {setLoadingComments(false)})    
     }, [article_id, article.created_at])
+
+    
     
     if (loading) {
-        return (
-            <p>Page loading..</p>
+        return (    
+            <p>Page loading...</p>            
+        )
+    } else if (loadingComments){
+        return (               
+                <p>Loading comments...</p>    
         )
     } else {       
         return (
@@ -35,12 +45,26 @@ function Article() {
                 </div>
                 <h1 className='articletitle'>{article.title}</h1>
                 <div className="bodyandimage">
+                    <img className='bodyandimage'src={article.article_img_url} alt='article'></img>
                     <p className='body'>{article.body}</p>
-                    <img className='articlesthumbnail'src={article.article_img_url} alt='article'></img>
                 </div>
                 <div className="votesandcommentcount">
                     <p className='votecommentelement'>Votes:  {article.votes}</p>
                     <p className='votecommentelement'>Comments: {article.comment_count}</p>
+                </div>
+                <div className='bodyandimage'>
+                <section className='scroll'>  
+                    <p>{article.comment_count === 0 ? 'No comments yet': `${article.comment_count} comments`}</p>                     
+                    {comments.map((comment) => {   
+                                            
+                        return (                       
+                            <div className='comment'key={`${comment.comment_id}`}>                       
+                                <CommentCard className='card' key={`${comment.comment_id}`}  comment={comment}/>   
+                            </div>                       
+                        )
+                    })}
+                </section>
+
                 </div>
                 </section>
             </div>
