@@ -1,10 +1,9 @@
-// import {useState, useEffect} from 'react';
+
 import '../test.css';
 
 
 
 function CommentCard({comment}) {
-    console.log(comment)
     return (
         <div>
             <div className='topicandposter'>                       
@@ -23,8 +22,6 @@ function CommentCard({comment}) {
             
         </div>
         
-        
-
     )
 }
 

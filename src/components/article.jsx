@@ -2,7 +2,6 @@ import {useParams} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import { getArticleByArticleId, getCommentsByArticleId} from '../utils/api';
 import CommentCard from './comment-card';
-
 import '../test.css';
 
 
@@ -29,12 +28,12 @@ function Article() {
     
     
     if (loading) {
-        return (
-            <p>Page loading..</p>
+        return (    
+            <p>Page loading...</p>            
         )
     } else if (loadingComments){
-        return (
-            <p>Loading comments..</p>
+        return (               
+                <p>Loading comments...</p>    
         )
     } else {       
         return (
@@ -54,9 +53,10 @@ function Article() {
                     <p className='votecommentelement'>Comments: {article.comment_count}</p>
                 </div>
                 <div className='bodyandimage'>
-                <section className='scroll'>                           
-                    {comments.map((comment) => {
-                        console.log(comment.author)
+                <section className='scroll'>  
+                    <p>{article.comment_count === 0 ? 'No comments yet': `${article.comment_count} comments`}</p>                     
+                    {comments.map((comment) => {   
+                                            
                         return (                       
                             <div className='comment'key={`${comment.comment_id}`}>                       
                                 <CommentCard className='card' key={`${comment.comment_id}`}  comment={comment}/>   
