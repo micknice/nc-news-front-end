@@ -75,7 +75,7 @@ function Article() {
                 </div>
                 <div className='bodyandimage'>
                 <section className='scroll'>
-                    <LeaveComment></LeaveComment> 
+                    <LeaveComment comments={comments} setComments={setComments}></LeaveComment> 
                     <p>{article.comment_count === 0 ? 'No comments yet': `${article.comment_count} comments`}</p>                     
                     {comments.map((comment) => {   
                                             

@@ -9,11 +9,11 @@ const UserProvider = ({children}) => {
     
 
     //state is username
-    const [user, setUser] = useState('');
-    const [logInStatus, setLogInStatus] = useState(false);
+    const [user, setUser] = useState('jessjelly');
+    const [logInStatus, setLogInStatus] = useState(true);
     const [userArray, setUserArray] = useState([]);
 
-    
+    console.log('context', user)
     
 
     return (

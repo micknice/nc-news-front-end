@@ -35,7 +35,7 @@ function Header() {
     if (logInStatus) {
         return (
             <div className='wrapper'>               
-                    <div>Logged in as user: {user}                                          
+                    <div className="login">Logged in as user: {user}                                          
                         <button type='submit'>log out</button>                        
                     </div>
                     <div> </div>

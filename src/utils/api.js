@@ -27,7 +27,8 @@ const getCommentsByArticleId = (articleId) => {
 }
 const postCommentByArticleId = (articleId, username, body) => {
     const reqBody = {username: username, body: body}
-    return niceNewsApi.post(`/articles/${articleId}/comments`).send(reqBody).then(({data}) => {
+    console.log('reqbody', reqBody)
+    return niceNewsApi.post(`/articles/${articleId}/comments`, reqBody).then(({data}) => {
         return data.posted_comment
     })
 }

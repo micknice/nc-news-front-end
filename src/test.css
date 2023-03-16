@@ -13,13 +13,19 @@
 .headerimage {
     display:flex;
     
+    
     align-self: center;
     
     max-width: 250px;    
 }
+.loginsection {
+    align-self: center;
+    
+}
 .user {
     margin: 1px;
 }
+
 
 .a {
     display:flex;
@@ -52,9 +58,12 @@ p {
 .votesandcommentcount {
     display:flex;
     flex-direction: row;
+    margin-top: 2%;
+    
 }
 .votecommentelement {
     margin-right: 3%;
+    margin-left: 1%;
     background-color: #f4f4f4 ;
 
 }
@@ -108,7 +117,16 @@ p {
     resize:horizontal;
     width: 200px;
 }
+.commentsubmit {
+    display:flex;
+    flex-direction: row;
+    margin-top: 1%;
 
+}
+.login {
+    margin-bottom: 2px;
+    
+}
 @media screen and (min-width: 768px) and (orientation: landscape) {
     .Header {
         display:flex;
