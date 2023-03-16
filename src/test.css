@@ -2,9 +2,10 @@
     height: 170px;
     display: flex;
     flex-wrap: wrap;
-    border-style: solid;
-    border-color: crimson;
+    /* border-style: solid;
+    border-color: crimson; */
     align-content: center;
+    margin: auto;
   }
   .wrapper > div {
     flex: 1 1 150px;
@@ -15,6 +16,9 @@
     align-self: center;
     
     max-width: 250px;    
+}
+.user {
+    margin: 1px;
 }
 
 .a {
@@ -99,6 +103,10 @@ p {
 }
 .comment {
     border-style:groove;
+}
+.commentbox {
+    resize:horizontal;
+    width: 200px;
 }
 
 @media screen and (min-width: 768px) and (orientation: landscape) {

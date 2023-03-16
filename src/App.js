@@ -10,7 +10,7 @@ import {Routes, Route} from 'react-router-dom'
 function App() {
   return (
     <div className="App">
-      {/* <Header className='Header'/>           */}
+      <Header className='Header'/>          
       <Routes>     
         <Route exact path='/' element= {<Articles />}/> 
         <Route exact path='/articles' element= {<Articles />}/> 
