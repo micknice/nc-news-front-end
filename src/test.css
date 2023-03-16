@@ -1,8 +1,27 @@
+.wrapper {
+    height: 170px;
+    display: flex;
+    flex-wrap: wrap;
+    border-style: solid;
+    border-color: crimson;
+    align-content: center;
+  }
+  .wrapper > div {
+    flex: 1 1 150px;
+  }
+.headerimage {
+    display:flex;
+    
+    align-self: center;
+    
+    max-width: 250px;    
+}
 
 .a {
     display:flex;
     flex-direction: column;
-    margin-left: auto;   
+    margin-left: auto;  
+     
 }
 .topicandposter {
     border-radius: 2px;   
@@ -83,6 +102,20 @@ p {
 }
 
 @media screen and (min-width: 768px) and (orientation: landscape) {
+    .Header {
+        display:flex;
+        flex-direction: row;
+        border-style: solid;
+        border-color: crimson;
+        height: 100px;
+    }
+    .headerimage {
+        display: flex;
+        flex-direction: row;
+        max-width: 300px;
+        align-items: center;
+        
+    }
     .a {
         display:flex;
         flex-direction: column;

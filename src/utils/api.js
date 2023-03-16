@@ -31,9 +31,10 @@ const postCommentByArticleId = (articleId, username, body) => {
         return data.posted_comment
     })
 }
-const patchVotesByArticleId = (articleId, voteIncrement) => {
-    const reqBody = {inc_votes: voteIncrement}
-    return niceNewsApi.patch(`/articles/${articleId}`).send(reqBody).then(({data}) => {
+const patchVotesByArticleId = (articleId) => {
+    const reqBody = {inc_votes: 1}
+    console.log(articleId, reqBody)
+    return niceNewsApi.patch(`/articles/${articleId}`,reqBody).then(({data}) => {
         return data.patched_article
     })
 
