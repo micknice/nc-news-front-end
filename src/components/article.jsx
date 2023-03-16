@@ -21,7 +21,7 @@ function Article() {
     useEffect(() => {         
         getArticleByArticleId(article_id).then((articleFromApi) => {
             setArticle(articleFromApi)
-            setVotes(articleFromApi.votes)                       
+                                
         }).then(() => {
             setLoading(false)
             setPostedAt(article.created_at.slice(0, article.created_at.length -5).replace('T', '  '))
