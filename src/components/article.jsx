@@ -1,8 +1,9 @@
 import {useParams} from 'react-router-dom';
 import {useState, useEffect} from 'react';
-import { getArticleByArticleId, getCommentsByArticleId} from '../utils/api';
+import { getArticleByArticleId, getCommentsByArticleId, patchVotesByArticleId} from '../utils/api';
 import CommentCard from './comment-card';
 import '../test.css';
+
 
 
 
@@ -13,10 +14,14 @@ function Article() {
     const [loading, setLoading] = useState(true); 
     const [comments, setComments] = useState([]);
     const [loadingComments, setLoadingComments] = useState(true); 
+    const [votes, setVotes] = useState(0)
+    const [voted, setVoted] = useState(false)
+    
     
     useEffect(() => {         
         getArticleByArticleId(article_id).then((articleFromApi) => {
-            setArticle(articleFromApi)                       
+            setArticle(articleFromApi)
+            setVotes(articleFromApi.votes)                       
         }).then(() => {
             setLoading(false)
             setPostedAt(article.created_at.slice(0, article.created_at.length -5).replace('T', '  '))
@@ -25,7 +30,13 @@ function Article() {
         })}).then(() => {setLoadingComments(false)})    
     }, [article_id, article.created_at])
 
-    
+    const handleUpVote = () => {
+        if (voted === false) {
+            setVoted(true)
+            setVotes((currentVotes) => currentVotes +1)
+            patchVotesByArticleId(article_id)
+        }       
+    }
     
     if (loading) {
         return (    
@@ -49,7 +60,8 @@ function Article() {
                     <p className='body'>{article.body}</p>
                 </div>
                 <div className="votesandcommentcount">
-                    <p className='votecommentelement'>Votes:  {article.votes}</p>
+                    <button onClick={handleUpVote}>Nice!</button>
+                    <p className='votecommentelement'>Votes:  {article.votes + votes}</p>
                     <p className='votecommentelement'>Comments: {article.comment_count}</p>
                 </div>
                 <div className='bodyandimage'>
