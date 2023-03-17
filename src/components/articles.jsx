@@ -14,7 +14,7 @@ function Articles() {
         getArticles().then((articlesFromApi) => {
             setArticlesArray(articlesFromApi);
         });
-    }}, []);
+    }}, [topic]);
     
     useEffect(() => {
         if (topic) {
@@ -22,7 +22,7 @@ function Articles() {
         getArticlesByTopic(topic).then((articlesFromApi) => {
             setArticlesArray(articlesFromApi);
         });
-    }}, []);
+    }}, [topic]);
 
     
     return (        
@@ -30,14 +30,14 @@ function Articles() {
             <section className='scroll'>           
                 {articlesArray.map((article) => {
                     return (
-                        <div>
-                        <Link to={`/articles/${article.article_id}`}>
-                            <div className='card' key={`${article.article_id}`}>                       
+                        
+                        <Link to={`/articles/${article.article_id}`} key={`${article.article_id}`}>
+                            <div className='card' >                       
                                 <ArticleCard className='card' key={`${article.article_id}`} topic={article.topic} author={article.author} created_at={article.created_at}article_id={article.article_id} title={article.title} article_img_url={article.article_img_url} votes={article.votes} comment_count={article.comment_count}/>
                             </div>
                         </Link>
 
-                        </div>
+                        
                     )
                 })}
             </section>
