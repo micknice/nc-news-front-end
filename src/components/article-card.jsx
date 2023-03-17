@@ -22,8 +22,7 @@ const ArticleCard = (article) => {
                 <p className='votecommentelement'>Comments: {article.comment_count}</p>
                 <p className='vtopicandposterelements'>posted by: {article.author} at {postedAt}</p>
             </div>
-            </Link>                 
-                    
+            </Link>                                     
         </div>
     )
 }

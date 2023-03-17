@@ -8,7 +8,6 @@ function Articles() {
     const { topic } = useParams();
     const [articlesArray, setArticlesArray] = useState([]);
     
-
     useEffect(() => {
         if (!topic) {
         getArticles().then((articlesFromApi) => {
@@ -23,8 +22,7 @@ function Articles() {
             setArticlesArray(articlesFromApi);
         });
     }}, [topic]);
-
-    
+   
     return (        
         <div className='a'>                    
             <section className='scroll'>           
