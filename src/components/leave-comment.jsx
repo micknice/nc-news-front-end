@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/User";
 import {postCommentByArticleId} from '../utils/api'
 import {useParams} from 'react-router-dom';
@@ -12,6 +12,13 @@ function LeaveComment({comments, setComments}) {
     const [posted, setPosted] = useState(false)
     const [response, setResponse] = useState('')
     
+
+    useEffect(() => {
+        if (response !== '') {
+            setPosted(false)
+            setNewCommentInput('be nice...')
+        }
+    }, [response] )
     const handleFocus = (event) => {
         event.preventDefault();
         if(newCommentInput === 'be nice...' || newCommentInput === 'Post unsuccessful. Try again...') {
@@ -27,10 +34,13 @@ function LeaveComment({comments, setComments}) {
             postCommentByArticleId(article_id, user, newCommentInput).then((comment) => {                
                 setComments([comment, ...comments])
                 setResponse('Post Successful!')
+                setNewCommentInput('be nice...')
                            
             })            
         } else { 
-            setResponse('Post unsuccessful. Try again...')           
+            setResponse('Post unsuccessful. Try again...');
+            setPosted(false);  
+            setNewCommentInput('be nice ...')        
         }
     }
 
