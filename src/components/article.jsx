@@ -1,11 +1,9 @@
 import {useParams} from 'react-router-dom';
-import {useState, useEffect} from 'react';
-import { getArticleByArticleId, getCommentsByArticleId, patchVotesByArticleId} from '../utils/api';
+import { getArticleByArticleId, getCommentsByArticleId, patchVotesByArticleId, postCommentByArticleId} from '../utils/api';
 import CommentCard from './comment-card';
 import '../test.css';
-
-
-
+import { useState, useEffect } from "react";
+import LeaveComment from './leave-comment'
 
 function Article() {
     const { article_id } = useParams();
@@ -14,30 +12,29 @@ function Article() {
     const [loading, setLoading] = useState(true); 
     const [comments, setComments] = useState([]);
     const [loadingComments, setLoadingComments] = useState(true); 
-    const [votes, setVotes] = useState(0)
-    const [voted, setVoted] = useState(false)
-    
-    
-    useEffect(() => {         
+    const [votes, setVotes] = useState(0);
+    const [voted, setVoted] = useState(false);
+       
+    useEffect(() => {
         getArticleByArticleId(article_id).then((articleFromApi) => {
-            setArticle(articleFromApi)
-                                
+            setArticle(articleFromApi)                               
         }).then(() => {
             setLoading(false)
-            setPostedAt(article.created_at.slice(0, article.created_at.length -5).replace('T', '  '))
+            const date = new Date(article.created_at).toUTCString();
+            setPostedAt(date)
         }).then(() => {getCommentsByArticleId(article_id).then((comments) => {
             setComments(comments)
         })}).then(() => {setLoadingComments(false)})    
     }, [article_id, article.created_at])
 
-    const handleUpVote = () => {
+    const handleUpVote = (event) => {
+        event.preventDefault();
         if (voted === false) {
             setVoted(true)
             setVotes((currentVotes) => currentVotes +1)
             patchVotesByArticleId(article_id)
         }       
-    }
-    
+    }    
     if (loading) {
         return (    
             <p>Page loading...</p>            
@@ -65,10 +62,10 @@ function Article() {
                     <p className='votecommentelement'>Comments: {article.comment_count}</p>
                 </div>
                 <div className='bodyandimage'>
-                <section className='scroll'>  
+                <section className='scroll'>
+                    <LeaveComment comments={comments} setComments={setComments}></LeaveComment> 
                     <p>{article.comment_count === 0 ? 'No comments yet': `${article.comment_count} comments`}</p>                     
-                    {comments.map((comment) => {   
-                                            
+                    {comments.map((comment) => {                                               
                         return (                       
                             <div className='comment'key={`${comment.comment_id}`}>                       
                                 <CommentCard className='card' key={`${comment.comment_id}`}  comment={comment}/>   
@@ -76,7 +73,6 @@ function Article() {
                         )
                     })}
                 </section>
-
                 </div>
                 </section>
             </div>

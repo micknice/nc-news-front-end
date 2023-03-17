@@ -2,9 +2,12 @@
     height: 170px;
     display: flex;
     flex-wrap: wrap;
-    border-style: solid;
-    border-color: crimson;
+    /* border-style: solid;
+    border-color: crimson; */
     align-content: center;
+    margin: auto;
+    
+    
   }
   .wrapper > div {
     flex: 1 1 150px;
@@ -12,10 +15,19 @@
 .headerimage {
     display:flex;
     
+    
     align-self: center;
     
     max-width: 250px;    
 }
+.loginsection {
+    align-self: center;
+    
+}
+.user {
+    margin: 1px;
+}
+
 
 .a {
     display:flex;
@@ -48,9 +60,12 @@ p {
 .votesandcommentcount {
     display:flex;
     flex-direction: row;
+    margin-top: 2%;
+    
 }
 .votecommentelement {
     margin-right: 3%;
+    margin-left: 1%;
     background-color: #f4f4f4 ;
 
 }
@@ -58,7 +73,8 @@ p {
     margin-top: 2%;
     display: flex;
     flex-direction:column;
-    width:100%;   
+    
+    
 }
 .bodyandimage {
     display: flex;
@@ -100,7 +116,20 @@ p {
 .comment {
     border-style:groove;
 }
+.commentbox {
+    resize:horizontal;
+    width: 200px;
+}
+.commentsubmit {
+    display:flex;
+    flex-direction: row;
+    margin-top: 1%;
 
+}
+.login {
+    margin-bottom: 2px;
+    
+}
 @media screen and (min-width: 768px) and (orientation: landscape) {
     .Header {
         display:flex;
