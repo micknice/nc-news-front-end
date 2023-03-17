@@ -20,7 +20,8 @@ function Article() {
             setArticle(articleFromApi)                               
         }).then(() => {
             setLoading(false)
-            setPostedAt(article.created_at.slice(0, article.created_at.length -5).replace('T', '  '))
+            const date = new Date(article.created_at).toUTCString();
+            setPostedAt(date)
         }).then(() => {getCommentsByArticleId(article_id).then((comments) => {
             setComments(comments)
         })}).then(() => {setLoadingComments(false)})    

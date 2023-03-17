@@ -1,10 +1,11 @@
 import '../test.css';
 
 function CommentCard({comment}) {
+    const date = new Date(comment.created_at).toUTCString();
     return (
         <div>
             <div className='topicandposter'>                                           
-                <p className='vtopicandposterelements'>posted by: {comment.author} at {comment.created_at}</p>
+                <p className='vtopicandposterelements'>posted by: {comment.author} at {date}</p>
             </div>            
             <div className="bodyandimage">
                 <p className='body'>{comment.body}</p>

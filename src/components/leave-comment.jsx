@@ -9,15 +9,19 @@ function LeaveComment({comments, setComments}) {
     const {article_id} = useParams();
     const {logInStatus, setLogInStatus, user} = useContext(UserContext);   
     const [newCommentInput, setNewCommentInput] = useState('be nice...');
+    const [posted, setPosted] = useState(false)
     
     const handleComment = (event) => {
         event.preventDefault();
-        if(newCommentInput !== '' && newCommentInput !== 'be nice...' && newCommentInput !== 'try again...') {
+        if(newCommentInput !== '' && newCommentInput !== 'be nice...' && newCommentInput !== 'Post Successful!' && newCommentInput !== 'Post unsuccessful. Try again...' && posted === false) {
+            setPosted(true)
             postCommentByArticleId(article_id, user, newCommentInput).then((comment) => {                
-                setComments([comment, ...comments])               
+                setComments([comment, ...comments])
+                setNewCommentInput('Post Successful!')
+                // .then(set)              
             })            
         } else { 
-            setNewCommentInput('try again...')           
+            setNewCommentInput('Post unsuccessful. Try again...')           
         }
     }
 

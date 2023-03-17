@@ -14,8 +14,9 @@ const getArticles = () => {
         return data.articles
     })
 }
-const getArticlesByTopicQuery = (topic) => {
-    return niceNewsApi.get(`/articles?topic=${topic}`).then(({data}) => {
+const getArticlesByTopic = (topic) => {
+    const topicStr = topic.toLowerCase()
+    return niceNewsApi.get(`/articles?topic=${topicStr}`).then(({data}) => {
         return data.articles
     })
 }
@@ -58,4 +59,4 @@ const deleteCommentByCommentId = (commentId) => {
 
 
 
-export { getTopics, getArticles, getArticleByArticleId, getCommentsByArticleId, postCommentByArticleId, patchVotesByArticleId, getUsers, deleteCommentByCommentId };
+export { getTopics, getArticles, getArticlesByTopic, getArticleByArticleId, getCommentsByArticleId, postCommentByArticleId, patchVotesByArticleId, getUsers, deleteCommentByCommentId };
