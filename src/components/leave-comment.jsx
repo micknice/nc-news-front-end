@@ -5,21 +5,19 @@ import {useParams} from 'react-router-dom';
 
 
 function LeaveComment({comments, setComments}) {
+    
     const {article_id} = useParams();
     const {logInStatus, setLogInStatus, user} = useContext(UserContext);   
     const [newCommentInput, setNewCommentInput] = useState('be nice...');
     
     const handleComment = (event) => {
         event.preventDefault();
-        if(newCommentInput !== '' && newCommentInput !== 'be nice...') {
-            postCommentByArticleId(article_id, user, newCommentInput).then((comment) => {
-                console.log('pre', comments)
-                setComments([comment, ...comments])
-                console.log('post', comment)
-            })
-            console.log('success', user)
-        } else {
-            console.log('invalid comment')
+        if(newCommentInput !== '' && newCommentInput !== 'be nice...' && newCommentInput !== 'try again...') {
+            postCommentByArticleId(article_id, user, newCommentInput).then((comment) => {                
+                setComments([comment, ...comments])               
+            })            
+        } else { 
+            setNewCommentInput('try again...')           
         }
     }
 

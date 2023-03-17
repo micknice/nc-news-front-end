@@ -1,20 +1,13 @@
 import { createContext } from "react";
-import { useState, useEffect } from "react";
-import {getUsers} from '../utils/api';
-
+import { useState } from "react";
 
 const UserContext = createContext();
 
-const UserProvider = ({children}) => {
+const UserProvider = ({children}) => {    
     
-
-    //state is username
     const [user, setUser] = useState('jessjelly');
     const [logInStatus, setLogInStatus] = useState(true);
     const [userArray, setUserArray] = useState([]);
-
-    console.log('context', user)
-    
 
     return (
         <UserContext.Provider value={{ user, setUser, logInStatus, setLogInStatus, userArray, setUserArray }}>

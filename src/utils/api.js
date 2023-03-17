@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 const niceNewsApi = axios.create({
     baseURL: 'https://nice-news.onrender.com/api',
 });
@@ -15,6 +14,11 @@ const getArticles = () => {
         return data.articles
     })
 }
+const getArticlesByTopicQuery = (topic) => {
+    return niceNewsApi.get(`/articles?topic=${topic}`).then(({data}) => {
+        return data.articles
+    })
+}
 const getArticleByArticleId = (articleId) => {
     return niceNewsApi.get(`/articles/${articleId}`).then(({data}) => {
         return data.article
@@ -26,15 +30,13 @@ const getCommentsByArticleId = (articleId) => {
     })
 }
 const postCommentByArticleId = (articleId, username, body) => {
-    const reqBody = {username: username, body: body}
-    console.log('reqbody', reqBody)
+    const reqBody = {username: username, body: body}   
     return niceNewsApi.post(`/articles/${articleId}/comments`, reqBody).then(({data}) => {
         return data.posted_comment
     })
 }
 const patchVotesByArticleId = (articleId) => {
-    const reqBody = {inc_votes: 1}
-    console.log(articleId, reqBody)
+    const reqBody = {inc_votes: 1}    
     return niceNewsApi.patch(`/articles/${articleId}`,reqBody).then(({data}) => {
         return data.patched_article
     })

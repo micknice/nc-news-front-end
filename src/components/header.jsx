@@ -8,7 +8,6 @@ function Header() {
     const {userArray, setUserArray} = useContext(UserContext);
     const {logInStatus, setLogInStatus} = useContext(UserContext);
     
-
     const handleUserChange = (event) => {
         event.preventDefault();
         setUserName(event.target.value)

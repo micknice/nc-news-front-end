@@ -1,14 +1,9 @@
 import {useParams} from 'react-router-dom';
-
 import { getArticleByArticleId, getCommentsByArticleId, patchVotesByArticleId, postCommentByArticleId} from '../utils/api';
 import CommentCard from './comment-card';
 import '../test.css';
-import { useContext, useState, useEffect } from "react";
-import { UserContext } from "../contexts/User";
+import { useState, useEffect } from "react";
 import LeaveComment from './leave-comment'
-
-
-
 
 function Article() {
     const { article_id } = useParams();
@@ -19,12 +14,8 @@ function Article() {
     const [loadingComments, setLoadingComments] = useState(true); 
     const [votes, setVotes] = useState(0);
     const [voted, setVoted] = useState(false);
-    
-    
-    
-    
-    
-    useEffect(() => {         
+       
+    useEffect(() => {
         getArticleByArticleId(article_id).then((articleFromApi) => {
             setArticle(articleFromApi)                               
         }).then(() => {
@@ -37,16 +28,12 @@ function Article() {
 
     const handleUpVote = (event) => {
         event.preventDefault();
-
         if (voted === false) {
             setVoted(true)
             setVotes((currentVotes) => currentVotes +1)
             patchVotesByArticleId(article_id)
         }       
-    }
-
-    
-    
+    }    
     if (loading) {
         return (    
             <p>Page loading...</p>            
@@ -77,8 +64,7 @@ function Article() {
                 <section className='scroll'>
                     <LeaveComment comments={comments} setComments={setComments}></LeaveComment> 
                     <p>{article.comment_count === 0 ? 'No comments yet': `${article.comment_count} comments`}</p>                     
-                    {comments.map((comment) => {   
-                                            
+                    {comments.map((comment) => {                                               
                         return (                       
                             <div className='comment'key={`${comment.comment_id}`}>                       
                                 <CommentCard className='card' key={`${comment.comment_id}`}  comment={comment}/>   
@@ -86,7 +72,6 @@ function Article() {
                         )
                     })}
                 </section>
-
                 </div>
                 </section>
             </div>

@@ -1,18 +1,27 @@
 import {useState, useEffect} from 'react';
 import ArticleCard from './article-card';
 import {getArticles} from '../utils/api';
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import '../test.css';
 
 function Articles() {
+    const { topic } = useParams();
     const [articlesArray, setArticlesArray] = useState([]);
     
 
     useEffect(() => {
+        if (!topic) {
         getArticles().then((articlesFromApi) => {
             setArticlesArray(articlesFromApi);
         });
-    }, []);
+    }}, []);
+    
+    useEffect(() => {
+        if (topic) {
+        getArticles().then((articlesFromApi) => {
+            setArticlesArray(articlesFromApi);
+        });
+    }}, []);
 
     
     return (        
