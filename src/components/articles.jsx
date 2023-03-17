@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import ArticleCard from './article-card';
 import {getArticles,getArticlesByTopic} from '../utils/api';
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import '../test.css';
 
 function Articles() {

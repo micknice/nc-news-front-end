@@ -1,5 +1,5 @@
 import {useParams} from 'react-router-dom';
-import { getArticleByArticleId, getCommentsByArticleId, patchVotesByArticleId, postCommentByArticleId} from '../utils/api';
+import { getArticleByArticleId, getCommentsByArticleId, patchVotesByArticleId} from '../utils/api';
 import CommentCard from './comment-card';
 import '../test.css';
 import { useState, useEffect } from "react";
