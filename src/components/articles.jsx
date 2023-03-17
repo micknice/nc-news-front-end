@@ -29,15 +29,10 @@ function Articles() {
         <div className='a'>                    
             <section className='scroll'>           
                 {articlesArray.map((article) => {
-                    return (
-                        
-                        <Link to={`/articles/${article.article_id}`} key={`${article.article_id}`}>
-                            <div className='card' >                       
-                                <ArticleCard className='card' key={`${article.article_id}`} topic={article.topic} author={article.author} created_at={article.created_at}article_id={article.article_id} title={article.title} article_img_url={article.article_img_url} votes={article.votes} comment_count={article.comment_count}/>
-                            </div>
-                        </Link>
-
-                        
+                    return (                       
+                        <div className='card' >                       
+                             <ArticleCard className='card' key={`${article.article_id}`} topic={article.topic} author={article.author} created_at={article.created_at}article_id={article.article_id} title={article.title} article_img_url={article.article_img_url} votes={article.votes} comment_count={article.comment_count}/>
+                        </div>                       
                     )
                 })}
             </section>

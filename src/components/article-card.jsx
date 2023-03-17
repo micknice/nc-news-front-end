@@ -11,7 +11,8 @@ const ArticleCard = (article) => {
                 <div className='topicandposter'>
                     <p className='topicandposterelements'id="topic">{topic}</p>               
                 </div>
-            </Link>                       
+            </Link>
+            <Link to={`/articles/${article.article_id}`} key={`${article.article_id}`}>
             <h1 className='articletitle'>{article.title}</h1>
             <div className="bodyandimage">                
                 <img className='articlesthumbnail'src={article.article_img_url} alt='article'></img>
@@ -20,7 +21,9 @@ const ArticleCard = (article) => {
                 <p className='votecommentelement'>Votes:  {article.votes}</p>
                 <p className='votecommentelement'>Comments: {article.comment_count}</p>
                 <p className='vtopicandposterelements'>posted by: {article.author} at {postedAt}</p>
-            </div>           
+            </div>
+            </Link>                 
+                    
         </div>
     )
 }
